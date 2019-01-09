@@ -16,25 +16,32 @@
 
 <ion-content padding>
 
-    <div class="logo">
-        <img  src="../../assets/imgs/logo.png">
-    </div>
-  
+   <div class="logo" >
+      <img src="../../assets/imgs/logo.png">
+   </div> 
+        
 
   <ion-list>
 
     <ion-item>
-      <ion-label floating>Username</ion-label>
+      <ion-label floating>Usuário</ion-label>
       <ion-input type="text" value=""></ion-input>
     </ion-item>
   
-    <ion-item>
-      <ion-label floating>Password</ion-label>
+    <ion-item> 
+      <ion-label floating>Senha</ion-label>
       <ion-input type="password"></ion-input>
     </ion-item>
   
   </ion-list>
 
-  <button ion-button full>Full Button</button>
+  <div class="lembrar">
+      <input type="checkbox" id="lembrar" name="lembrar" checked>
+      <label for="scales">Lembrar</label>
+  </div>
+
+  
+
+  <button ion-button full class="botao" (click)="goToPerfilPage()" >Login</button>
 
 </ion-content>
