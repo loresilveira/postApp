@@ -15,11 +15,13 @@
 
 <ion-content padding>
 
-    <ion-item>
+    <ion-item class="avatar">
         <ion-avatar item-start>
+        
           <img src="../../assets/imgs/avatar.jpg">
         </ion-avatar>
         <h2>Lorena Lima</h2>
+        <h6>lorelima</h6>
     </ion-item>
 
     <ion-card>
@@ -31,8 +33,8 @@
         </ion-card-content>
       </ion-card>
 
-      <button ion-button full color="primary">Mensagens</button>
-      <button ion-button full color="primary">Posts</button>
-      <button ion-button full color="danger">Logout</button>
+      <button class="botao" ion-button full color="primary" (click)="goToMensagensPage()">Mensagens</button>
+      <button class="botao" ion-button full color="primary" (click)="goToPostsPage()">Posts</button>
+      <button class="botao" ion-button full color="danger" (click)="goToLoginPage()">Logout</button>
 
 </ion-content>

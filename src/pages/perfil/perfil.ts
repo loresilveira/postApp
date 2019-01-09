@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { PostsPage } from '../posts/posts';
+import { MensagensPage } from '../mensagens/mensagens';
 
 /**
  * Generated class for the PerfilPage page.
@@ -22,4 +25,15 @@ export class PerfilPage {
     console.log('ionViewDidLoad PerfilPage');
   }
 
+  goToLoginPage(){
+    this.navCtrl.push(LoginPage);
+  }
+
+  goToPostsPage(){
+    this.navCtrl.push(PostsPage);
+  }
+
+  goToMensagensPage(){
+    this.navCtrl.push(MensagensPage);
+  }
 }

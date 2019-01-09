@@ -8,11 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LoginPageModule } from '../pages/login/login.module';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { PostsPage } from '../pages/posts/posts';
+import { MensagensPage } from '../pages/mensagens/mensagens';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    PerfilPage,
+    PostsPage,
+    MensagensPage
   ],
   imports: [
     BrowserModule,  
@@ -22,7 +28,10 @@ import { LoginPageModule } from '../pages/login/login.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    PerfilPage,
+    PostsPage,
+    MensagensPage
 
   ],
   providers: [
