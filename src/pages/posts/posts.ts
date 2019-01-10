@@ -15,11 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PostsPage {
 
+  searchQuery: string = '';
+  items: string[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.initializeItems();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PostsPage');
+  initializeItems() {
+    this.items = [
+      'Post1',
+      'Post2',
+      'Post3',
+      'Post4'
+    ];
   }
+
+  
 
 }
