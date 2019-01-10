@@ -6,13 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Mensagens</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>Mensagens</ion-title>
+      </ion-navbar>
 
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-toolbar color="primary">
+      <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of listaMsg">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+  </ion-content>
