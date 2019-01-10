@@ -3,7 +3,42 @@ page-perfil {
         
     }
 
-    img {
-        width: 200px;
+   
+
+    .item-md ion-avatar ion-img, .item-md ion-avatar img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 90px;
+        height: 90px;
     }
+
+    .item-md h2 {
+        
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    h6 {
+       
+        font-style: italic;
+    }
+
+    ion-card-header {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: lightgrey;
+    }
+
+    ion-card-content {
+        
+        background-color: lightgrey;
+    }
+
+    ion-card-content.dataPost {
+        font-size: 1.2rem;
+    }
+
+    
 }
