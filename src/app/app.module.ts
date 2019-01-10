@@ -11,6 +11,8 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { PostsPage } from '../pages/posts/posts';
 import { MensagensPage } from '../pages/mensagens/mensagens';
+import { DetPostPage } from '../pages/det-post/det-post';
+import { AlteraFotoPage } from '../pages/altera-foto/altera-foto';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { MensagensPage } from '../pages/mensagens/mensagens';
     HomePage,
     PerfilPage,
     PostsPage,
-    MensagensPage
+    MensagensPage,
+    PostsPage,
+    DetPostPage,
+    AlteraFotoPage
   ],
   imports: [
     BrowserModule,  
@@ -31,7 +36,10 @@ import { MensagensPage } from '../pages/mensagens/mensagens';
     HomePage,
     PerfilPage,
     PostsPage,
-    MensagensPage
+    MensagensPage,
+    PostsPage,
+    DetPostPage,
+    AlteraFotoPage
 
   ],
   providers: [
