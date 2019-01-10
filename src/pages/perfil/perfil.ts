@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
 import { DetPostPage } from '../det-post/det-post';
+import { AlteraFotoPage } from '../altera-foto/altera-foto';
 
 /**
  * Generated class for the PerfilPage page.
@@ -40,5 +41,9 @@ export class PerfilPage {
 
   goToDetPostPage(){
     this.navCtrl.push(DetPostPage);
+  }
+
+  goToPageAlteraFoto(){
+    this.navCtrl.push(AlteraFotoPage);
   }
 }
