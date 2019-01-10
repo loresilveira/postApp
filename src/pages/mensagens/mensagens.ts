@@ -16,23 +16,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MensagensPage {
 
-  public listaMsg: Array<string>=['1 -batman', '2-superman', '3- black panter'];
+  searchQuery: string = '';
+  items: string[];
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.initializeItems();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MensagensPage');
-    
+
+
+  initializeItems() {
+    this.items = [
+      'Amsterdam',
+      'Bogota',
+      'Batman',
+      'Superman'
+    ];
   }
 
-  getItems(ev: any){
-    let val = ev.target.value;
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.listaMsg = this.listaMsg.filter((item) => {
+      this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
