@@ -1,27 +1,6 @@
 page-perfil {
-    .avatar{
-        
-    }
 
-   
-
-    .item-md ion-avatar ion-img, .item-md ion-avatar img {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 90px;
-        height: 90px;
-    }
-
-    .item-md h2 {
-        
-        font-size: 2.5rem;
-        font-weight: bold;
-    }
-
-    h6 {
-       
-        font-style: italic;
-    }
+    
 
     ion-card-header {
         display: block;
@@ -36,9 +15,7 @@ page-perfil {
         background-color: lightgrey;
     }
 
-    ion-card-content.dataPost {
-        font-size: 1.2rem;
-    }
+    
 
     
 }

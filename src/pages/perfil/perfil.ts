@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
+import { DetPostPage } from '../det-post/det-post';
 
 /**
  * Generated class for the PerfilPage page.
@@ -35,5 +36,9 @@ export class PerfilPage {
 
   goToMensagensPage(){
     this.navCtrl.push(MensagensPage);
+  }
+
+  goToDetPostPage(){
+    this.navCtrl.push(DetPostPage);
   }
 }
