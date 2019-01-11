@@ -14,8 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'det-post.html',
 })
 export class DetPostPage {
-
+  postCard;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.postCard = {
+      usuario: "lorelima",
+      titulo: "Post1",
+      descricao: "Esse é o meu primeiro post Esse é o meu primeiro post  ",
+      data: "09/01/2019"
+    }
   }
 
   ionViewDidLoad() {

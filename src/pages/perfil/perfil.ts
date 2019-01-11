@@ -5,6 +5,8 @@ import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
 import { DetPostPage } from '../det-post/det-post';
 import { AlteraFotoPage } from '../altera-foto/altera-foto';
+import {PostComponent} from '../../components/post/post';
+
 
 /**
  * Generated class for the PerfilPage page.
@@ -20,7 +22,15 @@ import { AlteraFotoPage } from '../altera-foto/altera-foto';
 })
 export class PerfilPage {
 
+  postCard;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.postCard = {
+      usuario: "lorelima",
+      titulo: "Post1",
+      descricao: "Esse é o meu primeiro post Esse é o meu primeiro post  ",
+      data: "09/01/2019"
+    }
   }
 
   ionViewDidLoad() {
@@ -31,7 +41,7 @@ export class PerfilPage {
     this.navCtrl.push(LoginPage);
   }
 
-  goToPostsPage(){
+  goToPostPage(){
     this.navCtrl.push(PostsPage);
   }
 
@@ -46,4 +56,6 @@ export class PerfilPage {
   goToPageAlteraFoto(){
     this.navCtrl.push(AlteraFotoPage);
   }
+
+  
 }

@@ -23,20 +23,10 @@
     <h6>lorelima</h6>
   </ion-item>
 
-  <ion-card (click)="goToDetPostPage()">
-    <ion-card-header>
-      Último Post
-    </ion-card-header>
-    <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-    </ion-card-content>
-    <ion-card-content>
-      <p class="dataPost"> 09/01/2019 </p>
-    </ion-card-content>
-  </ion-card>
+  <post [post] = "postCard" (click)="goToDetPostPage()"></post> 
 
   <button class="botao" ion-button full color="primary" (click)="goToMensagensPage()">Mensagens</button>
-  <button class="botao" ion-button full color="primary" (click)="goToPostsPage()">Posts</button>
+  <button class="botao" ion-button full color="primary" (click)="goToPostPage()">Posts</button>
   <button class="botao" ion-button full color="danger" (click)="goToLoginPage()">Logout</button>
 
 </ion-content>

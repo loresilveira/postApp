@@ -1,0 +1,20 @@
+post {
+
+    ion-card-header {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: lightgrey;
+    }
+
+    ion-card-content {
+        
+        background-color: lightgrey;
+    }
+
+    ion-card-content p{
+        float: right;
+    }
+
+}
