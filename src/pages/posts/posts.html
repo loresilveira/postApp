@@ -22,20 +22,8 @@
 </ion-header>
 
 
-<ion-content padding>
-
-    
-
-    <ion-card *ngFor="let item of items">
-        <ion-card-header>
-          {{item}}
-        </ion-card-header>
-        <ion-card-content>
-          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-        </ion-card-content>
-        <ion-card-content >
-           <p class="dataPost">  09/01/2019 </p>
-        </ion-card-content>
-      </ion-card>
+<ion-content padding >
+ 
+    <post  [post] = "post" *ngFor="let post of postCard" ></post>
 
 </ion-content>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DetPostPage } from './det-post';
 import { ComponentsModule } from '../../components/components.module';
-import { PerfilPageModule } from '../perfil/perfil.module';
+
 
 
 @NgModule({
@@ -12,8 +12,7 @@ import { PerfilPageModule } from '../perfil/perfil.module';
   ],
   imports: [
     IonicPageModule.forChild(DetPostPage),
-    ComponentsModule,
-    PerfilPageModule
+    ComponentsModule
   ],
 })
 export class DetPostPageModule {}

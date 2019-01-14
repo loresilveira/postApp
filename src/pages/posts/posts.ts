@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { stringify } from '@angular/compiler/src/util';
 
 /**
  * Generated class for the PostsPage page.
@@ -15,22 +16,49 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PostsPage {
 
-  searchQuery: string = '';
-  items: string[];
+
+  postCard:Array<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeItems();
+
+    
+ this.postCard = [
+  {
+    "titulo": "post1",
+    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "usuario": "lorelima",
+    "data": "09/10/2019"
+  },
+  {
+    "titulo": "post2",
+    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "usuario": "lorelima",
+    "data": "09/10/2019"
+  },
+  {
+    "titulo": "post3",
+    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "usuario": "lorelima",
+    "data": "09/10/2019"
+  },
+  {
+    "titulo": "post4",
+    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "usuario": "lorelima",
+    "data": "09/10/2019"
+  },
+  {
+    "titulo": "post5",
+    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    "usuario": "lorelima",
+    "data": "09/10/2019"
+  }
+   
+];
   }
 
-  initializeItems() {
-    this.items = [
-      'Post1',
-      'Post2',
-      'Post3',
-      'Post4'
-    ];
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DetPostPage');
   }
-
-  
 
 }

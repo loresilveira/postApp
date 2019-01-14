@@ -13,39 +13,48 @@ import { PostsPage } from '../pages/posts/posts';
 import { MensagensPage } from '../pages/mensagens/mensagens';
 import { DetPostPage } from '../pages/det-post/det-post';
 import { AlteraFotoPage } from '../pages/altera-foto/altera-foto';
+import { AuthProvider } from '../providers/auth/auth';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { DetPostPageModule } from '../pages/det-post/det-post.module';
+import { PostComponent } from '../components/post/post';
+import { PostsPageModule } from '../pages/posts/posts.module';
+import { PostagensProvider } from '../providers/postagens/postagens';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    PerfilPage,
-    PostsPage,
+
     MensagensPage,
-    PostsPage,
-    DetPostPage,
+   
     AlteraFotoPage
   ],
   imports: [
     BrowserModule,  
     IonicModule.forRoot(MyApp),
-    LoginPageModule
+    LoginPageModule,
+    PerfilPageModule,
+    DetPostPageModule,
+    PostsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    PerfilPage,
-    PostsPage,
     MensagensPage,
-    PostsPage,
-    DetPostPage,
     AlteraFotoPage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider,
+    PostagensProvider
   ]
 })
 export class AppModule {}
