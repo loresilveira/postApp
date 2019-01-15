@@ -10,17 +10,19 @@ import { Component, Input } from '@angular/core';
   selector: 'post',
   templateUrl: 'post.html'
 })
-export class PostComponent {  
+export class PostComponent {
+
   
+
   @Input() post: any;
 
   constructor() {
     console.log('Hello PostComponent Component');
-  
+
 
   }
 
-  
+
 
 
 }

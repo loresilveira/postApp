@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { stringify } from '@angular/compiler/src/util';
+import { PostagensProvider } from '../../providers/postagens/postagens';
+import { Observable } from 'rxjs';
+
 
 /**
  * Generated class for the PostsPage page.
@@ -13,52 +15,37 @@ import { stringify } from '@angular/compiler/src/util';
 @Component({
   selector: 'page-posts',
   templateUrl: 'posts.html',
+ 
+   providers: [
+    PostagensProvider
+  ] 
 })
 export class PostsPage {
 
 
-  postCard:Array<any>;
+  public postCard:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-    
- this.postCard = [
-  {
-    "titulo": "post1",
-    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "usuario": "lorelima",
-    "data": "09/10/2019"
-  },
-  {
-    "titulo": "post2",
-    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "usuario": "lorelima",
-    "data": "09/10/2019"
-  },
-  {
-    "titulo": "post3",
-    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "usuario": "lorelima",
-    "data": "09/10/2019"
-  },
-  {
-    "titulo": "post4",
-    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "usuario": "lorelima",
-    "data": "09/10/2019"
-  },
-  {
-    "titulo": "post5",
-    "descricao": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    "usuario": "lorelima",
-    "data": "09/10/2019"
-  }
-   
-];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider) {
+    /**
+     *   
+      this.postCard = {
+      "autor": "",
+      "titulo": "",
+      "mensagem": "",
+      "data": ""
+    } */   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetPostPage');
-  }
+
+    
+    let data:Observable<any>;
+    data = this.postagemProvider.getListaPosts();
+    data.subscribe(result => {this.postCard = result}, 
+      error =>console.log(error) );
+      
+
+  } 
 
 }

@@ -6,6 +6,8 @@ import { MensagensPage } from '../mensagens/mensagens';
 import { DetPostPage } from '../det-post/det-post';
 import { AlteraFotoPage } from '../altera-foto/altera-foto';
 import {PostComponent} from '../../components/post/post';
+import { PostagensProvider } from '../../providers/postagens/postagens';
+import { Observable } from 'rxjs';
 
 
 /**
@@ -19,22 +21,42 @@ import {PostComponent} from '../../components/post/post';
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
+  providers: [
+    PostagensProvider
+  ]
 })
 export class PerfilPage {
 
-  postCard;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.postCard = {
-      usuario: "lorelima",
-      titulo: "Post1",
-      descricao: "Esse é o meu primeiro post Esse é o meu primeiro post  ",
-      data: "09/01/2019"
-    }
+   public postCard:any;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
+   
+      this.postCard = {
+      "autor": "",
+      "titulo": "",
+      "mensagem": "",
+      "data": ""
+      
+   } 
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
+
+    let data:Observable<any>;
+    data = this.postagemProvider.getUltimoPost();
+    data.subscribe(result => {this.postCard = result}, 
+      error =>console.log(error) );
+
+    /**
+     * this.postagemProvider.getUltimoPost().subscribe(
+      (data:PerfilPage) => {this.postCard = data; 
+      console.log(this.postCard)},
+              error   => console.log(error)
+    
+    );  
+     */
   }
 
   goToLoginPage(){
@@ -57,5 +79,4 @@ export class PerfilPage {
     this.navCtrl.push(AlteraFotoPage);
   }
 
-  
 }

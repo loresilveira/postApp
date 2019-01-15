@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import { PostagensProvider } from '../../providers/postagens/postagens';
 
 /**
  * Generated class for the DetPostPage page.
@@ -14,19 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'det-post.html',
 })
 export class DetPostPage {
-  postCard;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public postCard:any;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider ) {
     this.postCard = {
-      usuario: "lorelima",
-      titulo: "Post1",
-      descricao: "Esse é o meu primeiro post Esse é o meu primeiro post  ",
-      data: "09/01/2019"
-    }
+      "autor": "",
+      "titulo": "",
+      "mensagem": "",
+      "data": ""
+      
+   } 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetPostPage');
+
+    let data:Observable<any>;
+    data = this.postagemProvider.getUltimoPost();
+    data.subscribe(result => {this.postCard = result}, 
+      error =>console.log(error) );
   }
 
 }
