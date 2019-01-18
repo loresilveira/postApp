@@ -20,22 +20,19 @@ export class LoginPage {
 
   usuario = {
     "id": "",
-    "email": "",
+    "nome": "",
     "senha": ""
   }
   
-
+ 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider) {
-  }
-  
-    
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
 
-    
   }
 
   salvaUsuario(){
@@ -82,6 +79,8 @@ export class LoginPage {
  
   goToPerfilPage() {
     this.navCtrl.push(PerfilPage);
+    
   }
+
 
 }

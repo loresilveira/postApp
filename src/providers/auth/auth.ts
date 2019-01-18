@@ -12,7 +12,7 @@ import { EmailValidator } from '@angular/forms';
 @Injectable()
 export class AuthProvider {
 
-  private url:string = "http://localhost:3000";
+  private url:string = "http://aulas.getsandbox.com";
 
 
   constructor(public http: HttpClient) {
@@ -21,7 +21,7 @@ export class AuthProvider {
 
   postUsuario(data){
     return new Promise((resolve, reject) => {
-      this.http.post(this.url +'/usuarios', data).subscribe(res => {
+      this.http.post(this.url +'/login', data).subscribe(res => {
       resolve(res);
       }, (err) => {
       reject(err);
