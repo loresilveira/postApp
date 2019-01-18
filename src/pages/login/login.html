@@ -20,28 +20,34 @@
     <img src="../../assets/imgs/logo.png">
   </div>
 
+  <form (ngSubmit)="salvaUsuario()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Usuário</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="usuario.email" name="email"></ion-input>
+      </ion-item>
 
-  <ion-list>
-    <ion-item >
-      <ion-label floating>Usuário</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-item>
+        <ion-label floating> Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="usuario.senha" name="senha"></ion-input>
+
+      </ion-item>
+
+
+    </ion-list>
+
+    <ion-item no-lines>
+      <ion-label>Lembrar</ion-label>
+      <ion-checkbox color="dark" checked="true"></ion-checkbox>
     </ion-item>
 
-    <ion-item>
-        <ion-label floating > Senha</ion-label>
-        <ion-input type="password"></ion-input>
-      
-    </ion-item>
-      
+    <button ion-button full class="botao" type="submit" >Login</button>
 
-  </ion-list>
+  </form>
 
-  <ion-item no-lines>
-    <ion-label>Lembrar</ion-label>
-    <ion-checkbox color="dark" checked="true"></ion-checkbox>
-  </ion-item>
- 
 
-  <button ion-button full class="botao" (click)="goToPerfilPage()">Login</button>
+
+
+  
 
 </ion-content>

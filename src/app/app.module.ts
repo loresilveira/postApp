@@ -22,15 +22,17 @@ import { DetPostPageModule } from '../pages/det-post/det-post.module';
 import { PostComponent } from '../components/post/post';
 import { PostsPageModule } from '../pages/posts/posts.module';
 import { PostagensProvider } from '../providers/postagens/postagens';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-
-    MensagensPage,
-   
+    MensagensPage,   
     AlteraFotoPage
   ],
   imports: [
@@ -38,8 +40,10 @@ import { PostagensProvider } from '../providers/postagens/postagens';
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     PerfilPageModule,
-    DetPostPageModule,
-    PostsPageModule
+    DetPostPageModule,  
+    PostsPageModule,
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

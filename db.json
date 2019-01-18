@@ -1,0 +1,42 @@
+{
+  "usuarios": [
+    {
+      "id": "",
+      "email": "",
+      "senha": ""
+    },
+    {
+      "id": "CJSV6UB"
+    },
+    {
+      "id": "9ZFLnmm"
+    },
+    {
+      "id": "Y3Y-6oE"
+    },
+    {
+      "id": "wjIvkq4"
+    },
+    {
+      "id": "MfZICbZ",
+      "email": "lorena",
+      "senha": "12345"
+    },
+    {
+      "id": "imGUWEh",
+      "email": "talita",
+      "senha": "12345"
+    },
+    {
+      "id": "DB3pe81"
+    },
+    {
+      "id": "MGRSCLw"
+    },
+    {
+      "id": "RKiq3De",
+      "email": "lorena",
+      "senha": "12345"
+    }
+  ]
+}
