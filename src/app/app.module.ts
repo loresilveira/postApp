@@ -6,31 +6,27 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
+
 import { LoginPageModule } from '../pages/login/login.module';
-import { PerfilPage } from '../pages/perfil/perfil';
-import { PostsPage } from '../pages/posts/posts';
+
 import { MensagensPage } from '../pages/mensagens/mensagens';
 import { DetPostPage } from '../pages/det-post/det-post';
 import { AlteraFotoPage } from '../pages/altera-foto/altera-foto';
 import { AuthProvider } from '../providers/auth/auth';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { DetPostPageModule } from '../pages/det-post/det-post.module';
 import { PostComponent } from '../components/post/post';
 import { PostsPageModule } from '../pages/posts/posts.module';
 import { PostagensProvider } from '../providers/postagens/postagens';
+import { Keyboard } from '@ionic-native/keyboard';
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-
-    MensagensPage,
-   
+    MensagensPage, 
     AlteraFotoPage
   ],
   imports: [
@@ -54,7 +50,9 @@ import { PostagensProvider } from '../providers/postagens/postagens';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    PostagensProvider
+    PostagensProvider,
+    Keyboard,
+    ScreenOrientation
   ]
 })
 export class AppModule {}
