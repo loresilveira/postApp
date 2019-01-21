@@ -59,5 +59,8 @@ export class MensagensPage {
       })
     }
   }
+  onClear($event){
+    this.items = this.mensagens;
+  }
 
 }
