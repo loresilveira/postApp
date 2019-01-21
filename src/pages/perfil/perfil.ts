@@ -28,9 +28,9 @@ import { Observable } from 'rxjs';
 export class PerfilPage {
 
    public postCard:any;
-  
+   public usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
-   
+      
       this.postCard = {
       "autor": "",
       "titulo": "",
@@ -38,6 +38,9 @@ export class PerfilPage {
       "data": ""
       
    } 
+
+   this.usuario = navParams.get('usuario');
+   console.log(this.usuario);
     
   }
 

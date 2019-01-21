@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 /**
  * Generated class for the PostComponent component.
@@ -18,11 +19,7 @@ export class PostComponent {
 
   constructor() {
     console.log('Hello PostComponent Component');
-
-
+    
   }
-
-
-
 
 }

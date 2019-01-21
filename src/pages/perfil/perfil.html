@@ -16,11 +16,11 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-avatar item-start (click)="goToPageAlteraFoto()">
+      <ion-avatar item-start (click)="goToPageAlteraFoto()">
       <img src="assets/imgs/avatar.jpg">
     </ion-avatar>
-    <h2>Lorena Lima</h2>
-    <h6>lorelima</h6>
+    <h2>{{usuario.nome}}</h2>
+    <h6>{{usuario.login}}</h6>
   </ion-item>
 
   <post [post] = "postCard" (click)="goToDetPostPage()"></post> 
