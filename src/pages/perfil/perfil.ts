@@ -52,14 +52,6 @@ export class PerfilPage {
     data.subscribe(result => { this.postCard = result },
       error => console.log(error));
 
-    /**
-     * this.postagemProvider.getUltimoPost().subscribe(
-      (data:PerfilPage) => {this.postCard = data; 
-      console.log(this.postCard)},
-              error   => console.log(error)
-    
-    );  
-     */
   }
 
   goToLoginPage() {
@@ -75,7 +67,7 @@ export class PerfilPage {
   }
 
   goToDetPostPage() {
-    this.navCtrl.push(DetPostPage);
+    this.navCtrl.push(DetPostPage, {'ultimoPost':this.postCard});;
   }
 
   goToPageAlteraFoto() {

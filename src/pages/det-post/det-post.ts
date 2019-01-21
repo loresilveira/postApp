@@ -16,26 +16,21 @@ import { PostagensProvider } from '../../providers/postagens/postagens';
   templateUrl: 'det-post.html',
 })
 export class DetPostPage {
-  
-  public postCard:any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider ) {
-    this.postCard = {
-      "autor": "",
-      "titulo": "",
-      "mensagem": "",
-      "data": ""
-      
-   } 
+
+  public postCard: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
+    this.postCard = navParams.get('ultimoPost');
+    console.log(this.postCard);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetPostPage');
 
-    let data:Observable<any>;
+    let data: Observable<any>;
     data = this.postagemProvider.getUltimoPost();
-    data.subscribe(result => {this.postCard = result}, 
-      error =>console.log(error) );
+    data.subscribe(result => { this.postCard = result },
+      error => console.log(error));
   }
 
 }

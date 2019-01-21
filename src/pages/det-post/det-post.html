@@ -7,15 +7,16 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Detalhes do Post</ion-title>
+    <ion-title>{{postCard.titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-    <post [post] = "postCard"></post> 
+  <ion-label>Autor: {{postCard.autor}} </ion-label>
+  <ion-label>Publicado: {{postCard.data | date:'dd/MM/yyyy HH:mm':'Z'}} </ion-label>
+  <p>{{postCard.mensagem}}</p> 
 
 
 </ion-content>
