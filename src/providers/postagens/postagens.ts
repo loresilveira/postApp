@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /*
   Generated class for the PostagensProvider provider.
@@ -22,6 +23,10 @@ export class PostagensProvider {
 
   getListaPosts(){
     return this.http.get(this.baseURL + "/posts");
+  }
+
+  getMensagens(data){
+    return this.http.get(this.baseURL +'/msgs/'+ data);
   }
 
 }

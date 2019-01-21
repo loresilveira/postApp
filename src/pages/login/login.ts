@@ -20,7 +20,7 @@ import hasha from 'hasha';
 export class LoginPage {
 
   usuario = {
-  
+    "id":"",
     "nome": "",
     "senha": ""
   }
@@ -33,10 +33,7 @@ export class LoginPage {
     public authProvider: AuthProvider) {
     }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-
-  }
+  
   
   salvaUsuario(){
     
@@ -52,10 +49,6 @@ export class LoginPage {
 
   }
  
-  goToPerfilPage() {
-    
-    
-  }
-
+ 
 
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import { PostagensProvider } from '../../providers/postagens/postagens';
 
 /**
  * Generated class for the MensagensPage page.
@@ -17,29 +19,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MensagensPage {
 
   searchQuery: string = '';
-  items: string[];
-  
+  public id;
+  items;
+  msg;
+  mensagens:any = new Array;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mensagemProvider:PostagensProvider) {
+    console.log('Hello Mensagens Page');
+    this.id = navParams.get('usuario.id'); 
+    console.log('msg page:'+this.id);
+    this.getMsg();     
+  }
+
+  getMsg(){
+    
+    let data: Observable<any>;
+    data = this.mensagemProvider.getMensagens(this.id);
+    data.subscribe(result => { 
+    this.items = result;
+    this.mensagens = this.items;
+    console.log(this.mensagens); },
+      
+      error => console.log(error));
+       
+       
   }
 
 
-
-  initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-      'Batman',
-      'Superman'
-    ];
-  }
-
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the searchbar
+    getItems(ev: any) {
+    
+    this.items = this.mensagens;
+      // set val to the value of the searchbar
     const val = ev.target.value;
 
     // if the value is an empty string don't filter the items

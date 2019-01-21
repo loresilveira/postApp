@@ -5,7 +5,7 @@ import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
 import { DetPostPage } from '../det-post/det-post';
 import { AlteraFotoPage } from '../altera-foto/altera-foto';
-import {PostComponent} from '../../components/post/post';
+import { PostComponent } from '../../components/post/post';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
 
@@ -27,30 +27,30 @@ import { Observable } from 'rxjs';
 })
 export class PerfilPage {
 
-   public postCard:any;
-   public usuario;
+  public postCard: any;
+  usuario;
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
-      
-      this.postCard = {
+
+    this.postCard = {
       "autor": "",
       "titulo": "",
       "mensagem": "",
       "data": ""
-      
-   } 
+    }
 
-   this.usuario = navParams.get('usuario');
-   console.log(this.usuario);
-    
+    this.usuario = navParams.get('usuario');
+    console.log(this.usuario);
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
 
-    let data:Observable<any>;
+    let data: Observable<any>;
     data = this.postagemProvider.getUltimoPost();
-    data.subscribe(result => {this.postCard = result}, 
-      error =>console.log(error) );
+    data.subscribe(result => { this.postCard = result },
+      error => console.log(error));
 
     /**
      * this.postagemProvider.getUltimoPost().subscribe(
@@ -62,23 +62,23 @@ export class PerfilPage {
      */
   }
 
-  goToLoginPage(){
+  goToLoginPage() {
     this.navCtrl.push(LoginPage);
   }
 
-  goToPostPage(){
+  goToPostPage() {
     this.navCtrl.push(PostsPage);
   }
 
-  goToMensagensPage(){
-    this.navCtrl.push(MensagensPage);
+  goToMensagensPage() {
+    this.navCtrl.push(MensagensPage, {'usuario.id':this.usuario.id});
   }
 
-  goToDetPostPage(){
+  goToDetPostPage() {
     this.navCtrl.push(DetPostPage);
   }
 
-  goToPageAlteraFoto(){
+  goToPageAlteraFoto() {
     this.navCtrl.push(AlteraFotoPage);
   }
 
