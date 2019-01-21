@@ -19,14 +19,14 @@
  </div>
    
     <ion-item >
-        <ion-label floating > Senha</ion-label>
-      <ion-input [(ngModel)]="usuario.nome" type="text" maxlength=20>
+        <ion-label floating > Usuário</ion-label>
+      <ion-input [(ngModel)]="usuario.nome" type="text" maxLength=20>
       </ion-input>
     </ion-item>
     
     <ion-item>
         <ion-label floating > Senha</ion-label>
-        <ion-input [(ngModel)]="usuario.senha" type="tel" style="-webkit-text-security:disc;"  maxlength="10"></ion-input>
+        <ion-input [(ngModel)]="usuario.senha" type="tel" style="-webkit-text-security:disc;"  maxLength="10"></ion-input>
 
 
     </ion-item>
@@ -36,7 +36,7 @@
     <ion-checkbox color="dark" checked="true"></ion-checkbox>
   </ion-item>
  
-  <button ion-button full class="botao" [disabled]="usuario.nome.length < 3 || usuario.senha.length < 4" (click)="goToPerfilPage()">Login</button>
+  <button ion-button full class="botao" [disabled]="usuario.nome.length < 3 || usuario.senha.length < 4" (click)="salvaUsuario()">Login</button>
 
 
 </ion-content>
