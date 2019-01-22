@@ -19,18 +19,18 @@ export class DetPostPage {
 
   public postCard: any;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
-    this.postCard = navParams.get('ultimoPost');
-    console.log(this.postCard);
+    // this.verifica();
+    this.postCard = this.navParams.get('detPost');
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetPostPage');
 
-    let data: Observable<any>;
-    data = this.postagemProvider.getUltimoPost();
-    data.subscribe(result => { this.postCard = result },
-      error => console.log(error));
   }
+
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
+import { DetPostPage } from '../det-post/det-post';
 
 
 /**
@@ -26,14 +27,7 @@ export class PostsPage {
   public postCard:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider) {
-    /**
-     *   
-      this.postCard = {
-      "autor": "",
-      "titulo": "",
-      "mensagem": "",
-      "data": ""
-    } */   
+       
   }
 
   ionViewDidLoad() {
@@ -47,5 +41,9 @@ export class PostsPage {
       
 
   } 
+
+  goToDetPost(){
+    this.navCtrl.push(DetPostPage, {'detPost':this.postCard}  )
+  }
 
 }

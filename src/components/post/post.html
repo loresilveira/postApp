@@ -1,12 +1,12 @@
 
     
 
-    <ion-card>
+    <ion-card  (click)="goToDetPostPage()" >
         <ion-card-header>
           {{post.titulo}}
         </ion-card-header>
         <ion-card-content>
-          {{post.mensagem}}
+           {{post.mensagem | slice:0:40}} ...
         </ion-card-content>
         <ion-card-content >
          {{post.autor}} 

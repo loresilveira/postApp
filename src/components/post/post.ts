@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { NavController } from 'ionic-angular';
+import { DetPostPage } from '../../pages/det-post/det-post';
 
 /**
  * Generated class for the PostComponent component.
@@ -17,9 +19,12 @@ export class PostComponent {
 
   @Input() post: any;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
     console.log('Hello PostComponent Component');
     
   }
 
+  goToDetPostPage(){
+    this.navCtrl.push(DetPostPage, {'detPost':this.post});
+  }
 }

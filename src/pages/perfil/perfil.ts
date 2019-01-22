@@ -49,7 +49,8 @@ export class PerfilPage {
 
     let data: Observable<any>;
     data = this.postagemProvider.getUltimoPost();
-    data.subscribe(result => { this.postCard = result },
+    data.subscribe(result => { this.postCard = result
+    console.log(this.postCard) },
       error => console.log(error));
 
   }
@@ -67,7 +68,7 @@ export class PerfilPage {
   }
 
   goToDetPostPage() {
-    this.navCtrl.push(DetPostPage, {'ultimoPost':this.postCard});;
+    this.navCtrl.push(DetPostPage, {'detPost':this.postCard});
   }
 
   goToPageAlteraFoto() {
