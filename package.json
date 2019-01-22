@@ -70,7 +70,11 @@
       "cordova-plugin-ionic-webview": {},
       "com-badrit-base64": {}
     },
-    "cordova-plugin-ionic-webview": {}
+    "cordova-plugin-ionic-webview": {},
+    "platforms": [
+      "android",
+      "browser"
+    ]
   },
   "platforms": [
     "android"
