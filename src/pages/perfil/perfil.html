@@ -16,10 +16,15 @@
 <ion-content padding>
 
   <ion-item>
-      <ion-avatar item-start (click)="goToPageAlteraFoto()">
-      <img src="assets/imgs/avatar.jpg">
-    </ion-avatar>
-    <h2>{{usuario.nome}}</h2>
+      <ion-avatar color="primary"  item-start (click)="goToPageAlteraFoto()" >
+        <div class="avatar">
+          <div class="letras">
+            {{letras}} 
+          </div>
+        </div>
+      </ion-avatar>
+
+    <h2 class="quebra-linha">{{usuario.nome}}</h2>
     <h6>{{usuario.login}}</h6>
   </ion-item>
 

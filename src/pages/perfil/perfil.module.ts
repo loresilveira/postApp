@@ -5,7 +5,7 @@ import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
   declarations: [
-    PerfilPage,
+    PerfilPage
   ],
   imports: [
     IonicPageModule.forChild(PerfilPage),

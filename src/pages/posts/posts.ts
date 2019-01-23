@@ -23,11 +23,24 @@ import { DetPostPage } from '../det-post/det-post';
 })
 export class PostsPage {
 
-
   public postCard:any;
+  nome:string;
+  sobrenome:string;
+  letras:string;
+  usuario;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider) {
-       
+    this.usuario = navParams.get('usuario');  
+    this.iniciais();
+  }
+
+  iniciais(){
+    this.nome = this.usuario.nome.charAt(0);
+    let aux:string[] = this.usuario.nome.split(" ", 3);
+    this.sobrenome = aux[2].charAt(0);
+    this.letras = this.nome.concat(this.sobrenome);
+    console.log('split:'+this.letras);
+    
   }
 
   ionViewDidLoad() {

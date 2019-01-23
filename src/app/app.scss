@@ -42,3 +42,34 @@ h6 {
    
     font-style: italic;
 }
+
+.quebra-linha{
+    white-space: normal;
+}
+
+.avatar{
+    background: blue;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.letras{
+    height: 100%;
+    font-size: 40px;
+    line-height: 80px;
+}
+
+.letras p{
+    float: inherit;
+}
+
+.item-ios.item-block .item-inner {
+    border-bottom: none;
+ }
+
+
+.item-md.item-block .item-inner {
+   border-bottom: none;
+}

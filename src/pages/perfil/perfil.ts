@@ -29,6 +29,9 @@ export class PerfilPage {
 
   public postCard: any;
   usuario;
+  nome:string;
+  sobrenome:string;
+  letras:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
 
     this.postCard = {
@@ -40,13 +43,20 @@ export class PerfilPage {
 
     this.usuario = navParams.get('usuario');
     console.log(this.usuario);
+    this.iniciais();
+  }
 
-
+  iniciais(){
+    this.nome = this.usuario.nome.charAt(0);
+    let aux:string[] = this.usuario.nome.split(" ", 3);
+    this.sobrenome = aux[2].charAt(0);
+    this.letras = this.nome.concat(this.sobrenome);
+    console.log('split:'+this.letras);
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
-
     let data: Observable<any>;
     data = this.postagemProvider.getUltimoPost();
     data.subscribe(result => { this.postCard = result
@@ -60,7 +70,7 @@ export class PerfilPage {
   }
 
   goToPostPage() {
-    this.navCtrl.push(PostsPage);
+    this.navCtrl.push(PostsPage, {'usuario':this.usuario});
   }
 
   goToMensagensPage() {
@@ -72,7 +82,7 @@ export class PerfilPage {
   }
 
   goToPageAlteraFoto() {
-    this.navCtrl.push(AlteraFotoPage);
+    this.navCtrl.setRoot(AlteraFotoPage);
   }
 
 }

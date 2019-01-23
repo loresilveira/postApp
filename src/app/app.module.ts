@@ -21,6 +21,8 @@ import { PostagensProvider } from '../providers/postagens/postagens';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import {ScreenOrientation} from '@ionic-native/screen-orientation';
+import { AvatarModule } from 'ng2-avatar';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation';
     DetPostPageModule,  
     PostsPageModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    AvatarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
