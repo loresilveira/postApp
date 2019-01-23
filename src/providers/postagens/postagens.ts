@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PostagensProvider {
 
-  private baseURL = "http://aulas.getsandbox.com";
+  private baseURL = "http://aulas2.getsandbox.com";
 
   constructor(public http: HttpClient) {
     console.log('Hello PostagensProvider Provider');

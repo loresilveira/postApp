@@ -12,7 +12,7 @@ import { EmailValidator } from '@angular/forms';
 @Injectable()
 export class AuthProvider {
 
-  private url:string = "http://aulas.getsandbox.com";
+  private url:string = "http://aulas2.getsandbox.com";
 
 
   constructor(public http: HttpClient) {
