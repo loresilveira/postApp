@@ -1,16 +1,15 @@
 
     
 
-    <ion-card  (click)="goToDetPostPage()" >
-        <ion-card-header>
-          {{post.titulo}}
-        </ion-card-header>
-        <ion-card-content>
-           {{post.mensagem | slice:0:40}} ...
-        </ion-card-content>
+    <ion-card no-lines (click)="goToDetPostPage()" >
         <ion-card-content >
-         {{post.autor}} 
-        <p>{{post.data | date:'dd/MM/yyyy'}}</p> 
+           <div class="titulo">{{post.titulo}}</div> 
+          <div class="rodape">{{post.mensagem | slice:0:40}} ...  </div>         
+          <div class="rodape" >
+              {{post.autor}} 
+              <p>{{post.data | date:'dd/MM/yyyy'}}</p> 
+          </div> 
         </ion-card-content>
-      </ion-card>
+
+    </ion-card>
 

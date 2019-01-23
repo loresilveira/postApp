@@ -18,7 +18,7 @@ import hasha from 'hasha';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  
   usuario = {
     "id":"",
     "nome": "",
@@ -31,9 +31,21 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider: AuthProvider) {
+     
+      
     }
 
-  
+    formatar()
+    {
+       var login = this.usuario.senha
+
+       if(this.usuario.senha != undefined){
+        login = login.replace(/\D/g, '');
+        this.usuario.senha = login;
+        console.log(this.usuario.senha);
+       }
+
+    }
   
   salvaUsuario(){
     
@@ -44,11 +56,7 @@ export class LoginPage {
     }) .catch((err) => {
       console.log(err);
     });
-     
-    
 
   }
- 
- 
 
 }
