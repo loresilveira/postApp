@@ -21,7 +21,7 @@ export class DetPostPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
-    // this.verifica();
+   
     this.postCard = this.navParams.get('detPost');
 
 
