@@ -13,10 +13,14 @@ import { EmailValidator } from '@angular/forms';
 export class AuthProvider {
 
   private url:string = "http://aulas2.getsandbox.com";
-
+  public fotoURL:string = null;
+  
+  
+  
 
   constructor(public http: HttpClient) {
     console.log('Hello AuthProvider Provider');
+
   }
 
   postUsuario(data){
@@ -31,6 +35,19 @@ export class AuthProvider {
   
   }
 
+  setFoto(foto){
+    return this.fotoURL = foto;
+    
+  }
+
+  getFoto(){
+    return this.fotoURL;
+  }
+
+  
+
+ 
+  
 
   
 

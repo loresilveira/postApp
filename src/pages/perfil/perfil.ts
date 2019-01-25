@@ -8,6 +8,7 @@ import { AlteraFotoPage } from '../altera-foto/altera-foto';
 import { PostComponent } from '../../components/post/post';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 /**
@@ -32,7 +33,10 @@ export class PerfilPage {
   nome:string;
   sobrenome:string;
   letras:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
+  foto:string = null;
+  flag:boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider, public authProvider:AuthProvider) {
 
     this.postCard = {
       "autor": "",
@@ -65,8 +69,24 @@ export class PerfilPage {
 
   }
 
+  ionViewWillEnter(){
+    // this.foto = this.navParams.get('foto');
+    // console.log(this.foto);
+
+    this.foto = this.authProvider.getFoto();
+   
+    if(this.foto != null) {
+      this.letras = this.authProvider.setFoto(this.foto);
+     
+    } 
+    
+  }
+   
+  
+  
+
   goToLoginPage() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 
   goToPostPage() {
@@ -82,7 +102,7 @@ export class PerfilPage {
   }
 
   goToPageAlteraFoto() {
-    this.navCtrl.setRoot(AlteraFotoPage);
+    this.navCtrl.push(AlteraFotoPage);
   }
 
 }

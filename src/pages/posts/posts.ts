@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
 import { DetPostPage } from '../det-post/det-post';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 /**
@@ -28,8 +29,9 @@ export class PostsPage {
   sobrenome:string;
   letras:string;
   usuario;
+  foto:string = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider,public authProvider:AuthProvider) {
     this.usuario = navParams.get('usuario');  
     this.iniciais();
   }
@@ -51,9 +53,18 @@ export class PostsPage {
     data = this.postagemProvider.getListaPosts();
     data.subscribe(result => {this.postCard = result}, 
       error =>console.log(error) );
-      
+
+    this.carregaFoto();  
 
   } 
+
+  carregaFoto(){
+    this.foto = this.authProvider.getFoto(); 
+    if(this.foto != null) {
+      this.letras = this.authProvider.setFoto(this.foto);
+     
+    } 
+  }
 
   goToDetPost(){
     this.navCtrl.push(DetPostPage, {'detPost':this.postCard}  )

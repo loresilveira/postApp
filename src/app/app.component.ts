@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { LoginPage } from '../pages/login/login';
-import {ScreenOrientation} from '@ionic-native/screen-orientation';
+import {ScreenOrientation} from '@ionic-native/screen-orientation/ngx';
 
 
 @Component({

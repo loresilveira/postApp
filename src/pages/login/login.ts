@@ -18,7 +18,7 @@ import hasha from 'hasha';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  
+  foto;
   usuario = {
     "id":"",
     "nome": "",
@@ -30,8 +30,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public authProvider: AuthProvider) {
-     
+    public authProvider: AuthProvider) { 
       
     }
 
