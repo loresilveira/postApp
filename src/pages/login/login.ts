@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { PerfilPage } from '../perfil/perfil';
 import { AuthProvider } from '../../providers/auth/auth';
 import hasha from 'hasha';
@@ -27,12 +27,10 @@ export class LoginPage {
 
    
   private cripto:string;
-
+  
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public authProvider: AuthProvider) {
-     
-      
+    public authProvider: AuthProvider) {   
     }
 
     formatar()
@@ -52,10 +50,13 @@ export class LoginPage {
     this.cripto = hasha(this.usuario.senha,{algorithm:'sha256',encoding:'base64'});
     this.authProvider.postUsuario({login:this.usuario.nome,senha:this.cripto}).then((result) => {
     console.log( result);
+    this.authProvider.abreCarregando();
     this.navCtrl.setRoot(PerfilPage, {'usuario':result});
     }) .catch((err) => {
       console.log(err);
+      this.authProvider.erroReq();
     });
+    
 
   }
 

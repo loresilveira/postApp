@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { PostagensProvider } from '../../providers/postagens/postagens';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the MensagensPage page.
@@ -24,25 +25,54 @@ export class MensagensPage {
   msg;
   mensagens:any = new Array;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mensagemProvider:PostagensProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public mensagemProvider:PostagensProvider, 
+              public authProvider:AuthProvider,
+              public toastController:ToastController) {
+
     console.log('Hello Mensagens Page');
     this.id = navParams.get('usuario.id'); 
-    console.log('msg page:'+this.id);
-    this.getMsg();     
+       
+  }
+
+  ionViewDidLoad(){
+    this.getMsg();
   }
 
   getMsg(){
-    
-    let data: Observable<any>;
-    data = this.mensagemProvider.getMensagens(this.id);
-    data.subscribe(result => { 
+    this.authProvider.abreCarregando();
+    this.mensagemProvider.getMensagens(this.id).then(result => { 
     this.items = result;
     this.mensagens = this.items;
     console.log(this.mensagens); },
-      
-      error => console.log(error));
+      error => this.notMessages());
+    this.authProvider.fechaCarregando();  
        
        
+  }
+
+  async notMessages() {
+    const toast = await this.toastController.create({
+      message: 'Não há mensagens para esse usuário!',
+      duration: 3000
+    });
+    console.log('toast');
+    toast.present();
+  }
+
+  async toastNotFound() {
+    const toast = await this.toastController.create({
+      message: 'Mensagem não encontrada',
+      duration: 1000,
+      position: 'middle'
+    });
+    console.log('toast');
+    toast.present();
+  }
+
+  onBlur($event){
+    this.toastNotFound();
   }
 
 
@@ -57,11 +87,13 @@ export class MensagensPage {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }
+    } 
   }
   
   onClear($event){
     this.items = this.mensagens;
   }
+
+
 
 }

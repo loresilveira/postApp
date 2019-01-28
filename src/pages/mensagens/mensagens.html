@@ -11,9 +11,11 @@
       </ion-navbar>
 
     <ion-toolbar color="primary">
-      <ion-searchbar (input)="getItems($event)" (ionClear)="onClear($event)" ></ion-searchbar>
+      <ion-searchbar (input)="getItems($event)" (ionClear)="onClear($event)" (ionBlur)="onBlur($event)" ></ion-searchbar>
     </ion-toolbar>
   </ion-header>
+
+  <!-- (ionBlur)="messageNotFound($event)" -->
   
   <ion-content>
     <ion-list>

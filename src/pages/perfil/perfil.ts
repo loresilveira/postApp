@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
@@ -8,6 +8,7 @@ import { AlteraFotoPage } from '../altera-foto/altera-foto';
 import { PostComponent } from '../../components/post/post';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 /**
@@ -32,7 +33,10 @@ export class PerfilPage {
   nome:string;
   sobrenome:string;
   letras:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public postagemProvider: PostagensProvider, 
+              public authProvider:AuthProvider) {
 
     this.postCard = {
       "autor": "",
@@ -56,17 +60,25 @@ export class PerfilPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
-    let data: Observable<any>;
-    data = this.postagemProvider.getUltimoPost();
-    data.subscribe(result => { this.postCard = result
-    console.log(this.postCard) },
-      error => console.log(error));
+    
+    this.getLastPost(); 
+    this.authProvider.loginToast();
 
   }
 
+  getLastPost(){
+    console.log('ionViewDidLoad PerfilPage');
+    this.postagemProvider.getUltimoPost().then(result => { this.postCard = result
+    console.log(this.postCard) },
+      error => this.postagemProvider.notPosts());
+    this.authProvider.fechaCarregando(); 
+  }
+
+  
+
   goToLoginPage() {
     this.navCtrl.push(LoginPage);
+    this.authProvider.logoutToast();
   }
 
   goToPostPage() {
@@ -78,7 +90,9 @@ export class PerfilPage {
   }
 
   goToDetPostPage() {
+    
     this.navCtrl.push(DetPostPage, {'detPost':this.postCard});
+    this.authProvider.fechaCarregando();
   }
 
   goToPageAlteraFoto() {

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
 import { DetPostPage } from '../det-post/det-post';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 /**
@@ -29,7 +30,12 @@ export class PostsPage {
   letras:string;
   usuario;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public postagemProvider:PostagensProvider, 
+              public authProvider:AuthProvider, 
+              public toastController:ToastController) {
+
     this.usuario = navParams.get('usuario');  
     this.iniciais();
   }
@@ -45,15 +51,16 @@ export class PostsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetPostPage');
-
     
-    let data:Observable<any>;
-    data = this.postagemProvider.getListaPosts();
-    data.subscribe(result => {this.postCard = result}, 
-      error =>console.log(error) );
+    this.authProvider.abreCarregando();
+    this.postagemProvider.getListaPosts().then(result => {this.postCard = result}, 
+      error =>this.postagemProvider.notPosts() );
+    this.authProvider.fechaCarregando();  
       
 
   } 
+
+  
 
   goToDetPost(){
     this.navCtrl.push(DetPostPage, {'detPost':this.postCard}  )
