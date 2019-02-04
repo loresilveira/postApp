@@ -4,35 +4,32 @@ import { LoginPage } from '../login/login';
 import { PostsPage } from '../posts/posts';
 import { MensagensPage } from '../mensagens/mensagens';
 import { DetPostPage } from '../det-post/det-post';
-import { AlteraFotoPage } from '../altera-foto/altera-foto';
 import { PostComponent } from '../../components/post/post';
 import { PostagensProvider } from '../../providers/postagens/postagens';
 import { Observable } from 'rxjs';
+import { AlteraFotoPage } from '../altera-foto/altera-foto';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { User } from '../model/user.model';
 
-
-/**
- * Generated class for the PerfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
   providers: [
-    PostagensProvider
+    PostagensProvider,
+
   ]
 })
 export class PerfilPage {
 
   public postCard: any;
-  usuario;
-  nome:string;
+  usuario: User;
+    nome:string;
   sobrenome:string;
   letras:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider: PostagensProvider,
+              private native: NativeStorage) {
 
     this.postCard = {
       "autor": "",
@@ -46,13 +43,20 @@ export class PerfilPage {
     this.iniciais();
   }
 
+    ionViewWillEnter(){
+    if(this.usuario.fotoPerfil != null){
+      this.letras = null;
+    }
+  }
+
   iniciais(){
+    if(this.usuario.fotoPerfil == null){
     this.nome = this.usuario.nome.charAt(0);
     let aux:string[] = this.usuario.nome.split(" ", 3);
     this.sobrenome = aux[2].charAt(0);
     this.letras = this.nome.concat(this.sobrenome);
     console.log('split:'+this.letras);
-    
+    }
   }
 
   ionViewDidLoad() {
@@ -66,23 +70,27 @@ export class PerfilPage {
   }
 
   goToLoginPage() {
-    this.navCtrl.push(LoginPage);
+    this.native.remove("user")
+    .then((result:any)=>{
+      this.navCtrl.setRoot(LoginPage.name);
+    });
+
   }
 
   goToPostPage() {
-    this.navCtrl.push(PostsPage, {'usuario':this.usuario});
+    this.navCtrl.push(PostsPage.name, {'usuario':this.usuario});
   }
 
   goToMensagensPage() {
-    this.navCtrl.push(MensagensPage, {'usuario.id':this.usuario.id});
+    this.navCtrl.push(MensagensPage.name, {'usuario.id':this.usuario.id});
   }
 
   goToDetPostPage() {
-    this.navCtrl.push(DetPostPage, {'detPost':this.postCard});
+    this.navCtrl.push(DetPostPage.name, {'detPost':this.postCard});
   }
 
-  goToPageAlteraFoto() {
-    this.navCtrl.setRoot(AlteraFotoPage);
+  goToAlteraFotoPage() {
+    this.navCtrl.push(AlteraFotoPage.name, {'usuario':this.usuario});
   }
 
 }

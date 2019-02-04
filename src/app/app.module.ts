@@ -10,18 +10,17 @@ import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
 
 import { MensagensPage } from '../pages/mensagens/mensagens';
-import { DetPostPage } from '../pages/det-post/det-post';
-import { AlteraFotoPage } from '../pages/altera-foto/altera-foto';
 import { AuthProvider } from '../providers/auth/auth';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { DetPostPageModule } from '../pages/det-post/det-post.module';
-import { PostComponent } from '../components/post/post';
 import { PostsPageModule } from '../pages/posts/posts.module';
 import { PostagensProvider } from '../providers/postagens/postagens';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import {ScreenOrientation} from '@ionic-native/screen-orientation';
 import { AvatarModule } from 'ng2-avatar';
+import { Camera } from '@ionic-native/camera';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 
@@ -29,8 +28,9 @@ import { AvatarModule } from 'ng2-avatar';
   declarations: [
     MyApp,
     HomePage,
-    MensagensPage,   
-    AlteraFotoPage
+    MensagensPage,
+
+    
   ],
   imports: [
     BrowserModule,  
@@ -41,15 +41,14 @@ import { AvatarModule } from 'ng2-avatar';
     PostsPageModule,
     HttpClientModule,
     HttpModule,
-    AvatarModule
+    AvatarModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     MensagensPage,
-    AlteraFotoPage
-
   ],
   providers: [
     StatusBar,
@@ -57,7 +56,11 @@ import { AvatarModule } from 'ng2-avatar';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     PostagensProvider,
-    ScreenOrientation
+    ScreenOrientation,
+    Camera,
+    NativeStorage
+   
+    
   ]
 })
 export class AppModule {}

@@ -1,9 +1,4 @@
-<!--
-  Generated template for the AlteraFotoPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
     <ion-navbar color="primary">
@@ -17,14 +12,18 @@
 
   <div class="foto">
       <p>Selecione uma foto para seu perfil</p>
-      <ion-icon class="imagem" name="image"></ion-icon>
+      <img src= "{{usuario.fotoPerfil}}">
   </div>
   
   <div class="alterarImagem">
-      <ion-icon class="camera" name="camera"></ion-icon>
-      <ion-icon class="images" name="images"></ion-icon>
+  <ul>
+      <ion-icon (click)="openCamera('foto')" name="camera"></ion-icon>
+      <ion-icon (click)="openCamera()" style=text-align:left; name="photos"></ion-icon>
+    </ul>
   </div>
   
-  
-
 </ion-content>
+
+
+  
+  
