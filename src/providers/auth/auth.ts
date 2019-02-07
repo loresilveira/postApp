@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the AuthProvider provider.
@@ -18,7 +20,8 @@ export class AuthProvider {
   
   
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public storage : Storage) {
     console.log('Hello AuthProvider Provider');
 
   }
@@ -35,20 +38,40 @@ export class AuthProvider {
   
   }
 
-  setFoto(foto){
-    return this.fotoURL = foto;
-    
+  setCheckbox(data){
+    this.storage.set("checkbox", data);
+  }
+
+  getCheckbox(){
+    return this.storage.get("checkbox");
+  }
+
+
+  removeCheckbox(){
+   return this.storage.remove("checkbox");
+  }
+
+
+  setUser(data){
+    this.storage.set("user", data);
+  }
+
+  getUser(){
+    return this.storage.get("user");
+  }
+
+
+  removeUser(){
+   return this.storage.remove("user");
+  }
+
+  setFoto(data){
+    this.storage.set("foto", data);
   }
 
   getFoto(){
-    return this.fotoURL;
+    return this.storage.get("foto");
   }
 
   
-
- 
-  
-
-  
-
 }

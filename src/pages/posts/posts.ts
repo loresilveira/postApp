@@ -32,8 +32,10 @@ export class PostsPage {
   foto:string = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public postagemProvider:PostagensProvider,public authProvider:AuthProvider) {
-    this.usuario = navParams.get('usuario');  
-    this.iniciais();
+    // this.usuario = navParams.get('usuario');  
+    // this.iniciais();
+    this.carregaFoto();  
+
   }
 
   iniciais(){
@@ -54,16 +56,23 @@ export class PostsPage {
     data.subscribe(result => {this.postCard = result}, 
       error =>console.log(error) );
 
-    this.carregaFoto();  
-
+    
   } 
 
   carregaFoto(){
-    this.foto = this.authProvider.getFoto(); 
-    if(this.foto != null) {
-      this.letras = this.authProvider.setFoto(this.foto);
-     
-    } 
+    this.authProvider.getFoto().then((result) => { this.foto = result });
+    this.usuario = this.navParams.get('usuario');
+    console.log('usuarioooo :' + this.usuario);
+    if (this.usuario == undefined) {
+      this.authProvider.getUser().then((result) => {
+      this.usuario = result
+        console.log('storage user :' + this.usuario)
+        this.iniciais();
+      });
+    }else{
+      this.iniciais();
+    }
+    
   }
 
   goToDetPost(){

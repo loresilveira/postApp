@@ -27,8 +27,10 @@
         </div>
       </ion-avatar>
 
-    <h2 class="quebra-linha">{{usuario.nome}}</h2>
-    <h6>{{usuario.login}}</h6>
+    <div *ngIf= "usuario != null">
+      <h2 class="quebra-linha">{{usuario.nome}}</h2>
+      <h6>{{usuario.login}}</h6>
+    </div>
   </ion-item>
 
   <post [post] = "postCard" ></post> 
@@ -38,3 +40,7 @@
   <button class="botao" ion-button full color="danger" (click)="goToLoginPage()">Logout</button>
 
 </ion-content>
+
+  
+  
+  
