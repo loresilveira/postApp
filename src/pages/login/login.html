@@ -15,27 +15,27 @@
 <ion-content padding>
 
  <div class="logo">
-  <img  src="assets/imgs/logo.png"> 
+  <img  src="assets/imgs/logo.png">
  </div>
-   
+
     <ion-item >
         <ion-label floating > Usuário</ion-label>
       <ion-input [(ngModel)]="usuario.nome" type="text" maxLength=20>
       </ion-input>
     </ion-item>
-    
+
     <ion-item>
         <ion-label floating > Senha</ion-label>
         <ion-input [(ngModel)]="usuario.senha" type="tel" (keyup)="formatar()" style="-webkit-text-security:disc;"  maxLength="10"></ion-input>
 
 
     </ion-item>
-  
+
   <ion-item no-lines>
     <ion-label>Lembrar</ion-label>
-    <ion-checkbox color="dark" checked="true"></ion-checkbox>
+    <ion-checkbox color="dark" [(ngModel)]="usuario.manterLogado"></ion-checkbox>
   </ion-item>
- 
+
   <button ion-button full class="botao" [disabled]="usuario.nome.length < 3 || usuario.senha.length < 4" (click)="salvaUsuario()">Login</button>
 
 

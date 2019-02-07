@@ -3,14 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController, 
 import { PerfilPage } from '../perfil/perfil';
 import { AuthProvider } from '../../providers/auth/auth';
 import hasha from 'hasha';
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { User } from '../model/user.model';
 
 @IonicPage()
 @Component({
@@ -19,13 +13,16 @@ import hasha from 'hasha';
 })
 export class LoginPage {
   
+
   usuario = {
     "id":"",
     "nome": "",
-    "senha": ""
+    "senha": "",
   }
 
-   
+  checkbox:boolean = false;
+
+ public user: any;
   private cripto:string;
   
   constructor(public navCtrl: NavController,
@@ -44,20 +41,27 @@ export class LoginPage {
        }
 
     }
-  
+
   salvaUsuario(){
-    
+
     this.cripto = hasha(this.usuario.senha,{algorithm:'sha256',encoding:'base64'});
     this.authProvider.postUsuario({login:this.usuario.nome,senha:this.cripto}).then((result) => {
     console.log( result);
+    this.user = result;
+    if(this.checkbox){
+      this.authProvider.setCheckbox(this.checkbox);
+      this.authProvider.setUser(this.user);  
+    }
     this.authProvider.abreCarregando();
-    this.navCtrl.setRoot(PerfilPage, {'usuario':result});
+    this.navCtrl.setRoot(PerfilPage, {'usuario':this.user});
     }) .catch((err) => {
       console.log(err);
       this.authProvider.erroReq();
     });
     
 
+
   }
+
 
 }

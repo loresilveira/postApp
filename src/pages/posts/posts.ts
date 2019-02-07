@@ -29,15 +29,15 @@ export class PostsPage {
   sobrenome:string;
   letras:string;
   usuario;
+  foto:string = null;
+  
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public postagemProvider:PostagensProvider, 
               public authProvider:AuthProvider, 
               public toastController:ToastController) {
-
-    this.usuario = navParams.get('usuario');  
-    this.iniciais();
+                this.carregaFoto();
   }
 
   iniciais(){
@@ -57,10 +57,29 @@ export class PostsPage {
       error =>this.postagemProvider.notPosts() );
     this.authProvider.fechaCarregando();  
       
+    let data;
+    data = this.postagemProvider.getListaPosts();
+    data.subscribe(result => {this.postCard = result}, 
+      error =>console.log(error) );
 
+    
   } 
 
-  
+  carregaFoto(){
+    this.authProvider.getFoto().then((result) => { this.foto = result });
+    this.usuario = this.navParams.get('usuario');
+    console.log('usuarioooo :' + this.usuario);
+    if (this.usuario == undefined) {
+      this.authProvider.getUser().then((result) => {
+      this.usuario = result
+        console.log('storage user :' + this.usuario)
+        this.iniciais();
+      });
+    }else{
+      this.iniciais();
+    }
+    
+  }
 
   goToDetPost(){
     this.navCtrl.push(DetPostPage, {'detPost':this.postCard}  )

@@ -11,7 +11,7 @@
       </ion-navbar>
 
     <ion-toolbar color="primary">
-      <ion-searchbar (input)="getItems($event)" (ionClear)="onClear($event)" (ionBlur)="onBlur($event)" ></ion-searchbar>
+      <ion-searchbar (input)="getItems($event)" (ionClear)="onClear($event)"  ></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 
@@ -19,8 +19,15 @@
   
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let item of items">
+      <ion-item *ngFor="let item of items">        
         {{ item }}
+        <div *ngIf="!items?.length || items == null">
+            <p>Mensagem não encontrada</p>
+         </div>
+      </ion-item>
+
+      <ion-item *ngIf="!items?.length || items == null">        
+              <p>Mensagem não encontrada</p>
       </ion-item>
     </ion-list>
   </ion-content>

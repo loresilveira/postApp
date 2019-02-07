@@ -13,9 +13,12 @@
   <ion-item>
       <ion-avatar color="primary"  item-start (click)="goToPageAlteraFoto()" >
           <div class="avatar">
-            <div class="letras">
-              {{letras}} 
-            </div>
+              <div class="letras" *ngIf="foto == null ">
+                  {{letras}}                         
+                </div>
+                <div *ngIf="foto != null ">
+                    <img src="{{ foto }}" /> 
+                </div>
           </div>
         </ion-avatar>
       <h2 class="quebra-linha">{{usuario.nome}}</h2>

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
 import { LoadingController, ToastController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the AuthProvider provider.
@@ -15,9 +17,14 @@ export class AuthProvider {
 
   private url:string = "http://aulas2.getsandbox.com";
   public loading;
+  public fotoURL:string = null;
 
-  constructor(public http: HttpClient, public loadingCtrl:LoadingController, public toastController:ToastController) {
+  constructor(public http: HttpClient,
+     public loadingCtrl:LoadingController, 
+     public toastController:ToastController,
+     public storage : Storage) {
     console.log('Hello AuthProvider Provider');
+
   }
 
   postUsuario(data){
@@ -80,7 +87,40 @@ export class AuthProvider {
     toast.present();
   }
 
+  setCheckbox(data){
+    this.storage.set("checkbox", data);
+  }
+
+  getCheckbox(){
+    return this.storage.get("checkbox");
+  }
+
+
+  removeCheckbox(){
+   return this.storage.remove("checkbox");
+  }
+
+
+  setUser(data){
+    this.storage.set("user", data);
+  }
+
+  getUser(){
+    return this.storage.get("user");
+  }
+
+
+  removeUser(){
+   return this.storage.remove("user");
+  }
+
+  setFoto(data){
+    this.storage.set("foto", data);
+  }
+
+  getFoto(){
+    return this.storage.get("foto");
+  }
 
   
-
 }
