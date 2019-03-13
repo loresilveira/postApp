@@ -31,8 +31,13 @@ export class AuthProvider {
     return new Promise((resolve, reject) => {
       this.http.post(this.url +'/login', data).subscribe(res => {
       resolve(res);
-      }, (err) => {
-      this.erroLoginToast();
+      }, (error) => {
+        let toast = this.toastController.create({
+          message: "Conecte-se à internet",
+          duration: 3000
+        });
+        console.log(toast);
+        toast.present();
       });
       });
     
